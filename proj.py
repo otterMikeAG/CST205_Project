@@ -27,6 +27,9 @@ def home():
 
 @app.route('/pets')
 def pets():
+	messages = {{'message' : 'dog', 
+				 'type' : 'shitzu'}}
+
  	return render_template('products.html')
 
 @app.route('/details')
