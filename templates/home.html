@@ -1,0 +1,22 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+  
+    <div class="jumbotron">
+      <h1>Welcome to Pet Finder...</h1>
+      <p>This example application demonstrates some (but not all!) of the
+      features of pet finder</p>
+      <p>
+        <a class="btn btn-lg btn-default" role="button"
+           href="http://pythonhosted.org/Flask-Bootstrap" >flask bootstrap help</a>
+      </p>
+    </div>
+   </div>
+{%- endblock %}
+
+
