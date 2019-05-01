@@ -1,0 +1,30 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+  
+    <div class="jumbotron">
+      <img src="static/images/projectlogo.png" class="center-block" width="500" height="200">
+      <p class="center text-center">Looking for a companion?</p>
+      <p class="center text-center">Look no further you can search here over a thousand animals!</p>
+      <p class="center text-center">Search today!</p>
+      <form id="searchform">
+          <div class="input-lg">
+              <input id="searchbox" type="text" class="center-block" name="searchbox" placeholder="Search for animal type..">
+          </div>
+      </form>
+      <br>
+      <div class="text-center">
+          <p>
+              <a class="btn btn-lg btn-default" role="button"
+                 href="http://pythonhosted.org/Flask-Bootstrap" >flask bootstrap help</a>
+          </p>
+      </div>
+    </div>
+{%- endblock %}
+
+

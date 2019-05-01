@@ -4,9 +4,7 @@ from flask_nav.elements import Navbar, View
 from flask_nav import Nav
 
 
-# To keep things clean, we keep our Flask-Nav instance in here. We will define
-# frontend-specific navbars in the respective frontend, but it is also possible
-# to put share navigational items in here.
+#Base of our site holds routes for API calls and js functions.
 
 
 topbar = Navbar('',
@@ -25,9 +23,12 @@ nav.init_app(app)
 def home():
  	return render_template('home.html')
 
+
 @app.route('/pets')
 def pets():
- 	return render_template('products.html')
+	test_pets = [{'name' : 'dog2', 'description' : 'blah blah blah dog2', 'image' : '"https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png"'}, {'name' : 'dog', 'description' : 'blah blah blah dog', 'image' : '"https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png"'}]
+	return render_template('products.html', test_pets=test_pets)
+
 
 @app.route('/details')
 def details():
