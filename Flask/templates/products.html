@@ -2,21 +2,24 @@
 
 {% block content %}
 <!-- pets -->
+<P>{{pets_type}}</P>
 <section id="team" class="pb-5">
     <div class="container">
         <h5 class="section-title h1">Adopt These Pets!</h5>
         <div class="row">
-            <!-- pet -->
-            {% for pets in test_pets %}
+            <!-- pet (name, age, gender, breed) -->
+            {% for pets in test_pets['animals'] %}
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="image-flip" >
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class="pets img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+                                    <p><img class="pets img-fluid" src={{pets.image}} alt="card image"></p>
                                     <h4 class="card-title">{{pets.name}}</h4>
-                                    <p class="card-text">{{pets.description}}</p>
+                                    <p class="card-text">{{pets.age}}</p>
+                                    <p class="card-text">{{pets.breed}}</p>
+                                    <p class="card-text">{{pets.gender}}</p>
                                     <a href="{{url_for('details')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
