@@ -26,11 +26,12 @@ class Petfinder():
 			'Authorization': 'Bearer ' + self.auth_key
 		}
 		params = (
-				('type', type)
-			)
+			('type', type)
+		)
 		response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
 		if(response):
 			returned = response.json()
+			print(returned)
 			return returned
 		
 
