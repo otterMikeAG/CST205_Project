@@ -7,6 +7,7 @@ class Petfinder():
 		self.c_key = c_key
 		self.s_key = s_key
 		self.auth_key = 'need'
+		self.pet_dict = {}
 
 	
 	def print_values(self):

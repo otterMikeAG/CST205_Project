@@ -58,13 +58,14 @@ def home():
 def pets():
   if request.method == 'POST':
     pets_type = request.form['searchbox']
-    
+
+  print(pets_type)
   global returned
   #calls to the wrapper class 
   test_var = pc(my_key, secret)
   test_var.get_auth()
   test_var.print_values()
-  returned = test_var.get_pets(pets_type)#this causes problems other methods work.
+  #returned = test_var.get_pets(pets_type)#this causes problems other methods work.
   return render_template('products.html', test_pets=returned, pets_type=pets_type)
 
 
