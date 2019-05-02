@@ -15,10 +15,10 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class="pets img-fluid" src={{pets.photos.small}} alt="card image"></p>
+                                    <p><img class="pets img-fluid" src={{pets.photos[0].small}} alt="card image"></p>
                                     <h4 class="card-title">{{pets.name}}</h4>
                                     <p class="card-text">{{pets.age}}</p>
-                                    <p class="card-text">{{pets.breed}}</p>
+                                    <p class="card-text">{{pets.breeds.primary}}</p>
                                     <p class="card-text">{{pets.gender}}</p>
                                     <a href="{{url_for('details')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                 </div>
