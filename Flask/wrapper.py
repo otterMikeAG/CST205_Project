@@ -34,14 +34,20 @@ class Petfinder():
 		headers = {
 			'Authorization': 'Bearer ' + self.auth_key
 		}
-		params = (
-			('type', type)
-		)
-		#this is the call to the API that I think is causong the error 
-		response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
+		params = {
+			'type': type
+		}
 		
+		#this is the call to the API that I think is causing the error 
+		response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
+		print(response)
+		print('--------------')
 		returned = response.json()
+		#print(returned)
+		print('--------------')
 		data_send = returned['animals']
+		print(data_send)
+		print('--------------')
 		return data_send
 		
 
