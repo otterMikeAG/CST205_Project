@@ -27,12 +27,12 @@ headers = {
     'Authorization': 'Bearer ' + new_data,
 }
 
-params = (
-    ('type', 'cat'),
-)
-
-response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
-returned = response.json()
+# params = (
+#     ('type', 'cat'),
+# )
+#
+# response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
+# returned = response.json()
 #if(response):
 	#print(returned)
 
@@ -60,13 +60,10 @@ def pets():
     pets_type = request.form['searchbox']
 
   
-  global returned
-  #calls to the wrapper class 
+  # global returned
   test_var = pc(my_key, secret)
   test_var.get_auth()
-  test_var.print_values()
   pets_returned = test_var.get_pets(pets_type)#this causes problems other methods work.
-  pprint(pets_returned)
   return render_template('products.html', test_pets=pets_returned, pets_type=pets_type)
 
 
@@ -74,12 +71,35 @@ def pets():
 def adoptions():  
   global returned
 
-  return render_template('products.html', test_pets=returned)
+  return render_template('products.html')
 
 
-@app.route('/details')
+@app.route('/details', methods=['POST'])
 def details():
- 	return render_template('details.html')
+
+    if request.method == 'POST':
+        pet_details = request.form['animal_id']
+        #pet_name = request.form['animal_name']
+
+    # global rtrn
+    auth = pc(my_key, secret)
+    auth.get_auth()
+    pet = auth.get_pet_by_id(pet_details)
+    return render_template('details.html', pet_photo=pet)
+
+    # if request.method == 'POST':
+    #     pet = request.form['animal_id']
+    #     # description = request.form['animal_description']
+    #
+    # global re
+    # auth = pc(my_key, secret)
+    # auth.get_auth()
+    # return_id = auth.get_pet_by_id(pet)
+    #
+    # return render_template('details.html', id=return_id)
+
+
+
 
 if __name__ == "__main__":
 	app.run(debug=True)

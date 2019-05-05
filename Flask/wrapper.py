@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, pprint
 
 
 class Petfinder():
@@ -49,9 +49,68 @@ class Petfinder():
 		print(data_send)
 		print('--------------')
 		return data_send
+
+	#supposed to show the pet's details when clicked
+	def get_pet_by_id(self, id): #, name):
+
+		headers = {
+			'Authorization': 'Bearer ' + self.auth_key
+		}
+
+		params = {
+			'photos': id
+		}
+
+		# params2 = {
+		# 	'name': name
+		# }
+
+		#call to api
+		response2 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()#, params2=params2).json()
+		print(response2)
+		print('^^^^^^^^^^^^^^^^ID response^^^^^^^^^^^^^^^^')
+		# retrn = response2.json()
+		print('^^^^^^^^^^^^^^^^ID response^^^^^^^^^^^^^^^^')
+		animal_photo = response2['animals'][0]['photos'][0]['medium']
+		#animal_name = response2['animals'][0]['name']
+		print(animal_photo)
+		#print(animal_name)
+		print('^^^^^^^^^^^^^^^^Animal returned^^^^^^^^^^^^^^^^')
+		return animal_photo
+		#return animal_name
+
+
+		# headers
+
+		# headers = {
+		# 	'Authorization': 'Bearer ' + self.auth_key
+		# }
+		# params = {
+		# 	'id': id,
+		# }
+		# # params2 = {
+		# # 	'description': description
+		# # }
+		#
+		# # params = {
+		# # 	'description': description
+		# # }
+		#
+		# url = "https://api.petfinder.com/v2/animals/"
+		# # url.format(44608234)
+		#
+		# response = requests.get(url, headers=headers, params=params).json()
+		# # print('-------------')
+		# pprint.pprint(response['animals'])
+		#
+		# data_send=[response['animals'][0]['photos'][0]['medium'], response['animals'][0]['name']]
+		#
+		#
+		# return data_send
+
+
 		
 
 
 
 
-		

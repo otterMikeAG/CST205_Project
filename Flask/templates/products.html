@@ -2,7 +2,10 @@
 
 {% block content %}
 <!-- pets -->
-<P>{{pets_type}}</P>
+<div class="text-center alert-dismissible">
+    <h1>You searched for {{pets_type}}s</h1>
+</div>
+
 <section id="team" class="pb-5">
     <div class="container">
         <h5 class="section-title h1">Adopt These Pets!</h5>
@@ -16,13 +19,17 @@
                             <div class="card">
                                 <div class="card-body text-center">
                                     {% if pets.photos %}
-                                    <p><img class="pets img-fluid" src={{pets.photos[0].small}} alt="card image"></p>
+                                    <p><img class="pets img-fluid" src={{pets.photos[0].large}} alt="card image"></p>
                                     {% endif %}
                                     <h4 class="card-title">{{pets.name}}</h4>
                                     <p class="card-text">{{pets.age}}</p>
                                     <p class="card-text">{{pets.breeds.primary}}</p>
                                     <p class="card-text">{{pets.gender}}</p>
-                                    <a href="{{url_for('details')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <form action="/details" name="pet_details_form" method="POST">
+                                        <input type="hidden" name="animal_id" value={{pets.pet_photo}}>
+                                        <!--<input type="hidden" name="animal_name" value={{pets.pet_name}}>-->
+                                        <button name="test" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -32,8 +39,6 @@
             </div>
             {% endfor %}
             <!-- ./pet1-->
-            
-
         </div>
     </div>
 </section>
