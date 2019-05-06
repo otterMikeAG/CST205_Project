@@ -1,116 +1,118 @@
 import requests, json, pprint
 
 
+# noinspection PyUnreachableCode
 class Petfinder():
-	def __init__(self, c_key, s_key):
-		'''this will initialize the client key and secret key used for APi calls.'''
-		self.c_key = c_key
-		self.s_key = s_key
-		self.auth_key = 'need'
-		self.pet_dict = {}
+    def __init__(self, c_key, s_key):
+        '''this will initialize the client key and secret key used for APi calls.'''
+        self.c_key = c_key
+        self.s_key = s_key
+        self.auth_key = 'need'
+        self.pet_dict = {}
 
-	
-	def print_values(self):
-		print(self.c_key)
-		print('------------------')
-		print(self.s_key)
-		print('------------------')
-		print(self.auth_key)
-		print('------------------')
-#used to get auth key from API 
-	def get_auth(self):
-		data = {
-			'grant_type': 'client_credentials',
-			'client_id': self.c_key,
-			'client_secret': self.s_key
-		}
-		response = requests.post('https://api.petfinder.com/v2/oauth2/token', data=data)
-		if(response):
-			returned = response.json()
-			self.auth_key = returned['access_token']
+    def print_values(self):
+        print(self.c_key)
 
-	#preforms the api call to get all pets of specific type
-	def get_pets(self, type):
-		headers = {
-			'Authorization': 'Bearer ' + self.auth_key
-		}
-		params = {
-			'type': type
-		}
-		
-		#this is the call to the API that I think is causing the error 
-		response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
-		print(response)
-		print('--------------')
-		returned = response.json()
-		#print(returned)
-		print('--------------')
-		data_send = returned['animals']
-		print(data_send)
-		print('--------------')
-		return data_send
+        print(self.s_key)
 
-	#supposed to show the pet's details when clicked
-	def get_pet_by_id(self, id): #, name):
+        print(self.auth_key)
 
-		headers = {
-			'Authorization': 'Bearer ' + self.auth_key
-		}
+    # used to get auth key from API
+    def get_auth(self):
+        data = {
+            'grant_type': 'client_credentials',
+            'client_id': self.c_key,
+            'client_secret': self.s_key
+        }
+        response = requests.post('https://api.petfinder.com/v2/oauth2/token', data=data)
+        if (response):
+            returned = response.json()
+            self.auth_key = returned['access_token']
 
-		params = {
-			'photos': id
-		}
+    # preforms the api call to get all pets of specific type
+    def get_pets(self, type):
+        headers = {
+            'Authorization': 'Bearer ' + self.auth_key
+        }
+        params = {
+            'type': type
+        }
 
-		# params2 = {
-		# 	'name': name
-		# }
+        response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
+        print(response)
+        returned = response.json()
+        data_send = returned['animals']
+        print(data_send)
+        return data_send
 
-		#call to api
-		response2 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()#, params2=params2).json()
-		print(response2)
-		print('^^^^^^^^^^^^^^^^ID response^^^^^^^^^^^^^^^^')
-		# retrn = response2.json()
-		print('^^^^^^^^^^^^^^^^ID response^^^^^^^^^^^^^^^^')
-		animal_photo = response2['animals'][0]['photos'][0]['medium']
-		#animal_name = response2['animals'][0]['name']
-		print(animal_photo)
-		#print(animal_name)
-		print('^^^^^^^^^^^^^^^^Animal returned^^^^^^^^^^^^^^^^')
-		return animal_photo
-		#return animal_name
+    # supposed to show the pet's details when clicked
+    def get_photo(self, photo):  # , name):
 
+        headers = {
+            'Authorization': 'Bearer ' + self.auth_key
+        }
+        params = {
+            'photos': photo
+        }
+        # call to api
+        response2 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers,
+                                 params=params).json()  # , params2=params2).json()
+        #for debugging
+        print(response2)
+        animal_photo = response2['animals'][0]['photos'][0]['medium']
+        print('^^^^^^^^^^^^^^^^Animal returned^^^^^^^^^^^^^^^^')
+        return animal_photo
 
-		# headers
+    def get_name(self, name):
+        headers = {
+            'Authorization': 'Bearer ' + self.auth_key
+        }
+        params = {
+            'type': name
+        }
+        response3 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()
+        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        #for debugging
+        print(response3)
+        print('\n\n')
+        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        animal_name = response3['animals'][0]['name']
+        print('\n\n')
+        print(animal_name)
+        return animal_name
 
-		# headers = {
-		# 	'Authorization': 'Bearer ' + self.auth_key
-		# }
-		# params = {
-		# 	'id': id,
-		# }
-		# # params2 = {
-		# # 	'description': description
-		# # }
-		#
-		# # params = {
-		# # 	'description': description
-		# # }
-		#
-		# url = "https://api.petfinder.com/v2/animals/"
-		# # url.format(44608234)
-		#
-		# response = requests.get(url, headers=headers, params=params).json()
-		# # print('-------------')
-		# pprint.pprint(response['animals'])
-		#
-		# data_send=[response['animals'][0]['photos'][0]['medium'], response['animals'][0]['name']]
-		#
-		#
-		# return data_send
+    def get_description(self, description):
+        headers = {
+            'Authorization': 'Bearer ' + self.auth_key
+        }
+        params = {
+            'type': description
+        }
+        response4 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()
+        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        print(response4)
+        print('\n\n')
+        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        animal_name = response4['animals'][0]['description']
+        print('\n\n')
+        print(animal_name)
+        return animal_name
 
-
-		
-
-
+    def get_contact(self, contact):
+        headers = {
+            'Authorization': 'Bearer ' + self.auth_key
+        }
+        params = {
+            'type': contact
+        }
+        response5 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()
+        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        print(response5)
+        print('\n\n')
+        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        animal_contact = response5['animals'][0]['contact']['email']
+        print('\n\n')
+        print(animal_contact)
+        return animal_contact
 
 

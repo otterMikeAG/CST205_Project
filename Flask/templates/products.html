@@ -26,8 +26,10 @@
                                     <p class="card-text">{{pets.breeds.primary}}</p>
                                     <p class="card-text">{{pets.gender}}</p>
                                     <form action="/details" name="pet_details_form" method="POST">
-                                        <input type="hidden" name="animal_id" value={{pets.pet_photo}}>
-                                        <!--<input type="hidden" name="animal_name" value={{pets.pet_name}}>-->
+                                        <input type="hidden" name="animal_id">
+                                        <input type="hidden" name="animal_name">
+                                        <input type="hidden" name="animal_description">
+                                        <input type="hidden" name="animal_contact">
                                         <button name="test" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
                                     </form>
                                 </div>

@@ -2,11 +2,7 @@
 
 {% block content %}
 <body>
-
-    <!--{{id}}-->
-	<!--{{description}}-->
-
-	<p><img class="pets img-fluid center-block" src={{pet_photo}} alt="card image"></p>
+	<p><img class="pets img-fluid center-block" src={{photo}} alt="card image"></p>
 
 	<div class="container center-block text-center">
 		<div class="card center-block text-center">
@@ -14,12 +10,19 @@
 				<div class="wrapper row center-block text-center">
 					<div class="preview col-md-6 center-block text-center">
 					<div class="center-block text-center">
-						<h3 class="text-center product-title">Pet name</h3>
-						<p class="text-center product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+						<h3 class="text-center product-title">{{name}}</h3>
+						<br>
+						<p class="text-center ">
+							{{description}}
+						</p>
+						<br>
+						<p class="text-center">
+							To adopt {{name}} contact: {{contact}}
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-  </body>
+</body>
 {% endblock %}
