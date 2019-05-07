@@ -18,7 +18,6 @@ data = {
 }
 response = requests.post('https://api.petfinder.com/v2/oauth2/token', data=data)
 
-# print(response.json())
 
 returned = response.json()
 new_data = returned['access_token']
@@ -27,14 +26,13 @@ headers = {
     'Authorization': 'Bearer ' + new_data,
 }
 
-# params = (
-#     ('type', 'cat'),
-# )
-#
-# response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
-# returned = response.json()
-# if(response):
-# print(returned)
+params = (
+     ('type', 'cat'),
+ )
+
+response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
+returned = response.json()
+
 
 
 topbar = Navbar('',
@@ -54,17 +52,14 @@ nav.init_app(app)
 def home():
     return render_template('home.html')
 
-
-# error in here when I try to run the get_pets() method.
 @app.route('/pets', methods=['POST', 'GET'])
 def pets():
     if request.method == 'POST':
         pets_type = request.form['searchbox']
 
-    # global returned
     test_var = pc(my_key, secret)
     test_var.get_auth()
-    pets_returned = test_var.get_pets(pets_type)  # this causes problems other methods work.
+    pets_returned = test_var.get_pets(pets_type)
     return render_template('products.html', test_pets=pets_returned, pets_type=pets_type)
 
 
@@ -72,7 +67,7 @@ def pets():
 def adoptions():
     global returned
 
-    return render_template('products.html')
+    return render_template('products.html', test_pets=returned['animals'])
 
 
 @app.route('/details', methods=['POST'])

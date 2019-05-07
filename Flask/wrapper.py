@@ -1,7 +1,7 @@
 import requests, json, pprint
 
 
-# noinspection PyUnreachableCode
+
 class Petfinder():
     def __init__(self, c_key, s_key):
         '''this will initialize the client key and secret key used for APi calls.'''
@@ -39,10 +39,10 @@ class Petfinder():
         }
 
         response = requests.get('https://api.petfinder.com/v2/animals', headers=headers, params=params)
-        print(response)
+        
         returned = response.json()
         data_send = returned['animals']
-        print(data_send)
+        
         return data_send
 
     # supposed to show the pet's details when clicked

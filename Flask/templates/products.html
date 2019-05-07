@@ -23,7 +23,9 @@
                                     {% endif %}
                                     <h4 class="card-title">{{pets.name}}</h4>
                                     <p class="card-text">{{pets.age}}</p>
+                                    {% if pets.breeds.primary %}
                                     <p class="card-text">{{pets.breeds.primary}}</p>
+                                    {% endif %}
                                     <p class="card-text">{{pets.gender}}</p>
                                     <form action="/details" name="pet_details_form" method="POST">
                                         <input type="hidden" name="animal_id">
