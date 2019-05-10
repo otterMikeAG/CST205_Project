@@ -75,21 +75,22 @@ def details():
 
     if request.method == 'POST':
 
-        photo = request.form['animal_id']
+        animal_id = request.form['animal_id']
         name = request.form['animal_name']
         description = request.form['animal_description']
         contact = request.form['animal_contact']
+        photo = request.form['animal_photo']
 
-    auth = pc(my_key, secret)
-    auth.get_auth()
+    #auth = pc(my_key, secret)
+    #auth.get_auth()
 
-    pet_photo = auth.get_photo(photo)
-    pet_name = auth.get_name(name)
-    pet_description = auth.get_description(description)
-    pet_contact = auth.get_contact(contact)
+    #pet_photo = auth.get_photo(photo)
+    #pet_name = auth.get_name(name)
+    #pet_description = auth.get_description(description)
+    #pet_contact = auth.get_contact(contact)
 
-    return render_template('details.html', photo=pet_photo, name=pet_name, description=pet_description,
-                           contact=pet_contact)
+    return render_template('details.html', photo=photo, name=name, description=description,
+                           contact=contact)
 
 
 if __name__ == "__main__":

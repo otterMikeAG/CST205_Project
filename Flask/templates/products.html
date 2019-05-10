@@ -28,11 +28,22 @@
                                     {% endif %}
                                     <p class="card-text">{{pets.gender}}</p>
                                     <form action="/details" name="pet_details_form" method="POST">
-                                        <input type="hidden" name="animal_id">
-                                        <input type="hidden" name="animal_name">
-                                        <input type="hidden" name="animal_description">
-                                        <input type="hidden" name="animal_contact">
-                                        <button name="test" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                        <input type="hidden" name="animal_id" value={{pets.id}}>
+                                        <input type="hidden" name="animal_name"value={{pets.name}}>
+                                        {% if pets.photos %}
+                                        <input type="hidden" name="animal_photo"value={{pets.photos[0].large}}>
+                                        {% else %}
+                                        <input type="hidden" name="animal_photo"value="static/images/projectlogo.png">
+                                        {% endif %}
+                                        {% if pets.description %}
+                                        <input type="hidden" name="animal_description" value={{pets.description}}>
+                                        {% else %}
+                                        <input type="hidden" name="animal_description" value="No description Available">
+                                        {% endif %}
+                                        {% if pets.contact.email %}
+                                        <input type="hidden" name="animal_contact" value={{pets.contact.email}}>
+                                        {% endif %}
+                                        <button name="btn-details" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
                                     </form>
                                 </div>
                             </div>
