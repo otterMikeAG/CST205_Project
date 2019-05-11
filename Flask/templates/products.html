@@ -22,15 +22,23 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
+                                    <!--checks if there are photos for the pets and renders them if there are-->
                                     {% if pets.photos %}
                                     <p><img class="pets img-fluid" src={{pets.photos[0].large}} alt="card image"></p>
+                                    {% else %}
+                                    <!--if not then render this generic picture-->
+                                    <p><img class="pets img-fluid" src="static/images/noimageholder.jpg" height="50" width="50" alt="card image"></p>
                                     {% endif %}
+                                    <!--gets page name & age-->
                                     <h4 class="card-title">{{pets.name}}</h4>
                                     <p class="card-text">{{pets.age}}</p>
                                     {% if pets.breeds.primary %}
+                                    <!--if there is a primary breed, then select that one and render it otherwise don't render anything-->
                                     <p class="card-text">{{pets.breeds.primary}}</p>
                                     {% endif %}
+                                    <!--if there is a gender for the pet, render it, if not then don't render anything-->
                                     <p class="card-text">{{pets.gender}}</p>
+                                    <!--this form was made to get information on the pet that was clicked and send it to /details-->
                                     <form action="/details" name="pet_details_form" method="POST">
                                         <input type="hidden" name="animal_id" value={{pets.id}}>
                                         <input type="hidden" name="animal_name"value={{pets.name}}>

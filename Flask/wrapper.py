@@ -45,25 +45,26 @@ class Petfinder():
         
         return data_send
 
-    # supposed to show the pet's details when clicked
-    def get_photo(self, photo):  # , name):
+    def get_photo(self, photo):
 
+        '''this method returns photo from the animal that was clicked on'''
         headers = {
             'Authorization': 'Bearer ' + self.auth_key
         }
         params = {
             'photos': photo
         }
-        # call to api
         response2 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers,
-                                 params=params).json()  # , params2=params2).json()
-        #for debugging
-        print(response2)
+                                 params=params).json()
+        # this call gets the name of the photo from pulled data
+        # we have to do it this way because this is how
+        # we parse the information we get back
         animal_photo = response2['animals'][0]['photos'][0]['medium']
-        print('^^^^^^^^^^^^^^^^Animal returned^^^^^^^^^^^^^^^^')
         return animal_photo
 
     def get_name(self, name):
+
+        '''this method returns the name from the animal that was clicked on'''
         headers = {
             'Authorization': 'Bearer ' + self.auth_key
         }
@@ -71,17 +72,15 @@ class Petfinder():
             'type': name
         }
         response3 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()
-        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
-        #for debugging
-        print(response3)
-        print('\n\n')
-        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        # this call gets the name of the animal from pulled data
+        # we have to do it this way because this is how
+        # we parse the information we get back
         animal_name = response3['animals'][0]['name']
-        print('\n\n')
-        print(animal_name)
         return animal_name
 
     def get_description(self, description):
+
+        '''this method gets the description from the animal that was clicked on'''
         headers = {
             'Authorization': 'Bearer ' + self.auth_key
         }
@@ -89,16 +88,15 @@ class Petfinder():
             'type': description
         }
         response4 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()
-        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
-        print(response4)
-        print('\n\n')
-        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        # this call gets the description of the animal from pulled data
+        # we have to do it this way because this is how
+        # we parse the information we get back
         description = response4['animals'][0]['description']
-        print('\n\n')
-        print(description)
         return description
 
     def get_contact(self, contact):
+
+        '''this method returns contact info from animal that was clicked on'''
         headers = {
             'Authorization': 'Bearer ' + self.auth_key
         }
@@ -106,13 +104,8 @@ class Petfinder():
             'type': contact
         }
         response5 = requests.get("https://api.petfinder.com/v2/animals/", headers=headers, params=params).json()
-        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
-        print(response5)
-        print('\n\n')
-        print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
+        # this call gets the contact of the animal from the pulled data
+        # we have to do it this way because this is how
+        # we parse the information we get back
         animal_contact = response5['animals'][0]['contact']['email']
-        print('\n\n')
-        print(animal_contact)
         return animal_contact
-
-

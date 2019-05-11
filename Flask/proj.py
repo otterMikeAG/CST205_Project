@@ -54,6 +54,13 @@ def home():
 
 @app.route('/pets', methods=['POST', 'GET'])
 def pets():
+
+    '''
+        function that pulls animals from
+        API depending on user search and
+        also authenticates
+    '''
+
     if request.method == 'POST':
         pets_type = request.form['searchbox']
 
@@ -65,6 +72,11 @@ def pets():
 
 @app.route('/adoptions')
 def adoptions():
+
+    '''
+        functions that render animals on products.html
+    '''
+
     global returned
 
     return render_template('products.html', test_pets=returned['animals'])
@@ -73,6 +85,13 @@ def adoptions():
 @app.route('/details', methods=['POST'])
 def details():
 
+    '''
+        this method pulls data from form of animals that
+        were rendered in products.html so when they are clicked
+        we see the animal that was clicked and it redirects them
+        to another page
+    '''
+
     if request.method == 'POST':
 
         animal_id = request.form['animal_id']
@@ -80,14 +99,6 @@ def details():
         description = request.form['animal_description']
         contact = request.form['animal_contact']
         photo = request.form['animal_photo']
-
-    #auth = pc(my_key, secret)
-    #auth.get_auth()
-
-    #pet_photo = auth.get_photo(photo)
-    #pet_name = auth.get_name(name)
-    #pet_description = auth.get_description(description)
-    #pet_contact = auth.get_contact(contact)
 
     return render_template('details.html', photo=photo, name=name, description=description,
                            contact=contact)

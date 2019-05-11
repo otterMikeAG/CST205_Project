@@ -2,16 +2,21 @@
 
 {% block content %}
 <body>
+	<!--photo of the pet that was clicked on-->
 	<p><img class="pets img-fluid center-block" src={{photo}} alt="card image"></p>
 	<div class="container table-bordered center-block text-center">
 		<div class="container-fluid center-block text-center">
 			<div class="wrapper row center-block text-center">
 				<div class="preview col-md-6 center-block text-center">
+					<!--displays name of animal that was clicked-->
 					<h2 class="text-center product-title">{{name}}</h2>
 					<br>
+					<!--displays description of animal that was clicked-->
 					<h3>{{description}}</h3>
 					<br>
+					<!--displays name of animal that was clicked-->
 					<h4>To adopt {{name}} contact: </h4>
+					<!--displays contact of animal that was clicked-->
 					<h5>{{contact}}</h5>
 					<br>
 				</div>
