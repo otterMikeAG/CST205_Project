@@ -93,10 +93,10 @@ class Petfinder():
         print(response4)
         print('\n\n')
         print('\n\n^^^^^^^^^^^^^^^^^RESPONSE 3 NAME^^^^^^^^^^^^^^^^')
-        animal_name = response4['animals'][0]['description']
+        description = response4['animals'][0]['description']
         print('\n\n')
-        print(animal_name)
-        return animal_name
+        print(description)
+        return description
 
     def get_contact(self, contact):
         headers = {

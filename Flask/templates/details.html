@@ -3,26 +3,21 @@
 {% block content %}
 <body>
 	<p><img class="pets img-fluid center-block" src={{photo}} alt="card image"></p>
-
-	<div class="container center-block text-center">
-		<div class="card center-block text-center">
-			<div class="container-fliud center-block text-center">
-				<div class="wrapper row center-block text-center">
-					<div class="preview col-md-6 center-block text-center">
-					<div class="center-block text-center">
-						<h3 class="text-center product-title">{{name}}</h3>
-						<br>
-						<p class="text-center ">
-							{{description}}
-						</p>
-						<br>
-						<p class="text-center">
-							To adopt {{name}} contact: {{contact}}
-						</p>
-					</div>
+	<div class="container table-bordered center-block text-center">
+		<div class="container-fluid center-block text-center">
+			<div class="wrapper row center-block text-center">
+				<div class="preview col-md-6 center-block text-center">
+					<h2 class="text-center product-title">{{name}}</h2>
+					<br>
+					<h3>{{description}}</h3>
+					<br>
+					<h4>To adopt {{name}} contact: </h4>
+					<h5>{{contact}}</h5>
+					<br>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br>
 </body>
 {% endblock %}
