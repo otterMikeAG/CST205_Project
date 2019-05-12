@@ -68,7 +68,7 @@ def pets():
     test_var.get_auth()
     pets_returned = test_var.get_pets(pets_type)
     returned_test = pets_returned
-    pprint(returned_test)
+    #pprint(returned_test)
     #print(pets_returned[0]['description'])
     return render_template('products.html', test_pets=pets_returned, pets_type=pets_type)
 
@@ -101,8 +101,7 @@ def details():
         description = request.form['animal_description']
         contact = request.form['animal_contact']
         photo = request.form['animal_photo']
-        #description = returned_test[0]['description']
-        print(description)
+        
     return render_template('details.html', photo=photo, name=name, description=description,
                            contact=contact)
 
