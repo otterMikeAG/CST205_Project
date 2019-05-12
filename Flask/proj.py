@@ -11,6 +11,7 @@ import os
 my_key = 'weKdtBuz0Oo2Qktfou38OquosnaCpilOFNqKyoay59caXNU8eI'
 secret = 'ky6BRwUeDRuDcB4uPQ4G9iizplHnvfyNMBHINiZj'
 type_of_pet = " "
+returned_test = {}
 data = {
     'grant_type': 'client_credentials',
     'client_id': my_key,
@@ -56,9 +57,8 @@ def home():
 def pets():
 
     '''
-        function that pulls animals from
-        API depending on user search and
-        also authenticates
+        function that renders a template with 
+        a list of pets for adoption based of type.
     '''
 
     if request.method == 'POST':
@@ -67,6 +67,9 @@ def pets():
     test_var = pc(my_key, secret)
     test_var.get_auth()
     pets_returned = test_var.get_pets(pets_type)
+    returned_test = pets_returned
+    pprint(returned_test)
+    #print(pets_returned[0]['description'])
     return render_template('products.html', test_pets=pets_returned, pets_type=pets_type)
 
 
@@ -74,7 +77,7 @@ def pets():
 def adoptions():
 
     '''
-        functions that render animals on products.html
+        functions that renders a template for cat Adoptions.
     '''
 
     global returned
@@ -86,10 +89,9 @@ def adoptions():
 def details():
 
     '''
-        this method pulls data from form of animals that
-        were rendered in products.html so when they are clicked
-        we see the animal that was clicked and it redirects them
-        to another page
+        this method renders a template that uses
+        the selcted pet information and displays 
+        more info.
     '''
 
     if request.method == 'POST':
@@ -99,7 +101,8 @@ def details():
         description = request.form['animal_description']
         contact = request.form['animal_contact']
         photo = request.form['animal_photo']
-
+        #description = returned_test[0]['description']
+        print(description)
     return render_template('details.html', photo=photo, name=name, description=description,
                            contact=contact)
 

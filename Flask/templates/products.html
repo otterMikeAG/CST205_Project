@@ -48,7 +48,7 @@
                                         <input type="hidden" name="animal_photo"value="static/images/noimageholder.jpg">
                                         {% endif %}
                                         {% if pets.description %}
-                                        <input type="hidden" name="animal_description" value={{pets.description}}>
+                                        <input type="hidden" name="animal_description" value="'{{pets.description}}'" maxlength="300">
                                         {% else %}
                                         <input type="hidden" name="animal_description" value="No description Available">
                                         {% endif %}
