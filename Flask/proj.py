@@ -5,17 +5,17 @@ from flask_nav import Nav
 import requests, json
 from pprint import pprint
 from wrapper import Petfinder as pc
+import config
 import os
 
 # Base of our site holds routes for API calls and js functions.
-my_key = 'weKdtBuz0Oo2Qktfou38OquosnaCpilOFNqKyoay59caXNU8eI'
-secret = 'ky6BRwUeDRuDcB4uPQ4G9iizplHnvfyNMBHINiZj'
+
 type_of_pet = " "
 returned_test = {}
 data = {
     'grant_type': 'client_credentials',
-    'client_id': my_key,
-    'client_secret': secret
+    'client_id': config.api_key,
+    'client_secret': config.api_secret
 }
 response = requests.post('https://api.petfinder.com/v2/oauth2/token', data=data)
 
@@ -35,18 +35,18 @@ response = requests.get('https://api.petfinder.com/v2/animals', headers=headers,
 returned = response.json()
 
 
-
+#navbar elements
 topbar = Navbar('',
                 View('Home', 'home'),
                 View('Adoption', 'adoptions'),
                 )
 
 nav = Nav()
-nav.register_element('top', topbar)
+nav.register_element('top', topbar)#position
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
-nav.init_app(app)
+bootstrap = Bootstrap(app)#init a bootstrap an flask app
+nav.init_app(app)#add the nave bar
 
 
 @app.route('/')
@@ -64,12 +64,11 @@ def pets():
     if request.method == 'POST':
         pets_type = request.form['searchbox']
 
-    test_var = pc(my_key, secret)
+    test_var = pc(config.api_key, config.api_secret)
     test_var.get_auth()
     pets_returned = test_var.get_pets(pets_type)
     returned_test = pets_returned
-    #pprint(returned_test)
-    #print(pets_returned[0]['description'])
+    
     return render_template('products.html', test_pets=pets_returned, pets_type=pets_type)
 
 
