@@ -29,6 +29,8 @@ Program in Action
 	"Homepage with search criteria inputted into search bar. User must hit submit."
 	<img width="1284" alt="Screen Shot 2019-05-11 at 1 48 03 PM" src="https://user-images.githubusercontent.com/49499806/57575000-3122ee80-73f7-11e9-866d-421268e5c653.png">
 	"User is taken to page containing adoptable animals within the required search criteria."
+	<img width="1442" alt="Screen Shot 2019-05-12 at 9 29 00 PM" src="https://user-images.githubusercontent.com/49499806/57595987-0cb13a00-74fd-11e9-9210-6b3102112be6.png">
+	"User clicks on the green + button and is take to a description page with the animal’s information."
 
 
 References 
