@@ -91,7 +91,7 @@ env.bak/
 venv.bak/
 
 #config file
-config.py
+.config.py
 
 # Spyder project settings
 .spyderproject
