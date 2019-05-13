@@ -5,7 +5,7 @@ from flask_nav import Nav
 import requests, json
 from pprint import pprint
 from wrapper import Petfinder as pc
-import config
+import config #your config file will hold your specific api key and secret if this code is to be reused.
 import os
 
 # Base of our site holds routes for API calls and js functions.
