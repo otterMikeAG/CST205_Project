@@ -92,7 +92,8 @@ venv.bak/
 
 #config file
 .config.py
-
+config.py
+Flask/config.py
 # Spyder project settings
 .spyderproject
 .spyproject
