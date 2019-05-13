@@ -1,22 +1,9 @@
-{# ``base.html`` is the template all our other templates derive from. While
-   Flask-Bootstrap ships with its own base, it is good form to create a custom
-   one for our app, as it allows customizing some aspects.
-
-   Deriving from bootstap/base.html gives us a basic page scaffoling.
-
-   You can find additional information about template inheritance at
-
-   http://jinja.pocoo.org/docs/templates/#template-inheritance
-#}
+{# ``base.html`` is the template all our other templates derive from #}
 {%- extends "bootstrap/base.html" %}
 
-{# We also set a default title, usually because we might forget to set one.
-   In our sample app, we will most likely just opt not to change it #}
+{# We set a default title for app here #}
 {% block title %}Pet Finder{% endblock %}
 
-{# While we are at it, we also enable fixes for legacy browsers. First we
-   import the necessary macros: #}
-{% import "bootstrap/fixes.html" as fixes %}
 
 {# Then, inside the head block, we apply these. To not replace the header,
    ``super()`` is used: #}
@@ -28,12 +15,9 @@
 
 {%- endblock %}
 
-{# Adding our own CSS files is also done here. Check the documentation at
-   http://pythonhosted.org/Flask-Bootstrap/basic-usage.html#available-blocks
-   for an overview. #}
+{# Adding our own CSS files is also done here. #}
 {% block styles -%}
-    {{super()}}  {# do not forget to call super or Bootstrap's own stylesheets
-                    will disappear! #}
+    {{super()}}  {# call super to use bootstrasps premade css sheets #}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css"
           href="{{url_for('static', filename='css/template.css')}}">
@@ -44,21 +28,5 @@
 {# Finally, round things out with navigation #}
 {#navbar#}
 {% block navbar -%}
-<div class="footer">
-    <ul class="list-unstyled list-inline text-center">
-        <li class="list-inline-item">
-          <h6 class="mb-1">Authors: Michael Avalos-Garcia, Zack Hutchinson, Ashleigh Adams, Tessa Torosco</h6>
-        </li>
-        <li class="list-inline-item">
-          <a href="https://github.com/otterMikeAG/CST205_Project" class="btn btn-outline-black btn-rounded">
-              <img class="rounded mx-auto d-block" src="static/images/gitlogo.png" width="30" height="30">
-          </a>
-        </li>
-    </ul>
-    <div class="footer-copyright text-center py-3">© 2019 Educational Purposes Only:
-        <img class="rounded mx-auto d-block" src="static/images/csumblogo.png" width="30" height="30">
-    </div>
-</div>
 {{nav.top.render()}}
 {% endblock %}
-

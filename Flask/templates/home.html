@@ -1,5 +1,4 @@
-{# This simple template derives from ``base.html``. See ``base.html`` for
-   more information about template inheritance. #}
+{# This simple template derives from ``base.html`` #}
 {%- extends "base.html" %}
 
 {% block content %}
@@ -21,6 +20,23 @@
       </form>
     </div>
     <br><br>
+    {% block footer %}
+<div class="footer">
+    <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+          <h6 class="mb-1">Authors: Michael Avalos-Garcia, Zack Hutchinson, Ashleigh Adams, Tessa Torosco</h6>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://github.com/otterMikeAG/CST205_Project" class="btn btn-outline-black btn-rounded">
+              <img class="rounded mx-auto d-block" src="static/images/gitlogo.png" width="30" height="30">
+          </a>
+        </li>
+    </ul>
+    <div class="footer-copyright text-center py-3">© 2019 Educational Purposes Only:
+        <img class="rounded mx-auto d-block" src="static/images/csumblogo.png" width="30" height="30">
+    </div>
+</div>
+{% endblock %}
 {%- endblock %}
 
 
